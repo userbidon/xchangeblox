@@ -1,5 +1,6 @@
 class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
+  before_action :force_user_to_be_connected
 
   # GET /blocks
   # GET /blocks.json
