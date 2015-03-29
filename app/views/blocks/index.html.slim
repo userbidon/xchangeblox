@@ -1,0 +1,25 @@
+h1 Listing blocks
+
+table
+  thead
+    tr
+      th Block type
+      th Size
+      th Support type
+      th
+      th
+      th
+
+  tbody
+    - @blocks.each do |block|
+      tr
+        td = block.block_type
+        td = block.size
+        td = block.support_type
+        td = link_to 'Show', block
+        td = link_to 'Edit', edit_block_path(block)
+        td = link_to 'Destroy', block, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Block', new_block_path

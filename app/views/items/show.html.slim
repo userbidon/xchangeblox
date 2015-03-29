@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Type:
+  = @item.item_type
+p
+  strong Item:
+  = @item.item_id
+p
+  strong Price:
+  = @item.price
+
+= link_to 'Edit', edit_item_path(@item)
+'|
+= link_to 'Back', items_path

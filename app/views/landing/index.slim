@@ -1,0 +1,18 @@
+h3 Admin Panel
+
+= link_to "Handle blocks", controller: "blocks", action: "index"
+br
+= link_to "Handle supports", controller: "supports", action: "index"
+br
+
+
+
+h3 User Panel
+
+= link_to "Sell a new item", controller: "items", action: "new"
+br
+= link_to "Search for items to buy", controller: "items", action: "index"
+br
+
+p
+  = @use

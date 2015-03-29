@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Type:
+  = @support.support_type
+p
+  strong Size:
+  = @support.size
+
+= link_to 'Edit', edit_support_path(@support)
+'|
+= link_to 'Back', supports_path
