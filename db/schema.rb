@@ -11,32 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323123000) do
+ActiveRecord::Schema.define(version: 20150330075408) do
 
   create_table "blocks", force: true do |t|
     t.string   "block_type"
-    t.integer  "size"
     t.string   "support_type"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "items", force: true do |t|
-    t.string   "item_type"
-    t.integer  "item_id"
-    t.integer  "price"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
-
-  create_table "supports", force: true do |t|
-    t.string   "support_type"
-    t.integer  "size"
-    t.string   "image"
+    t.integer  "block_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

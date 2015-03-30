@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root to: 'landing#index'
 
-  resources :supports
-  resources :blocks
-  resources :items
   resources :users
 
   get 'landing/index'
