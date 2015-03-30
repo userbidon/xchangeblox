@@ -4,11 +4,8 @@ table
   thead
     tr
       th Name
-      th Login
       th Password
       th Mail
-      th Phone
-      th Reviews
       th
       th
       th
@@ -17,11 +14,8 @@ table
     - @users.each do |user|
       tr
         td = user.name
-        td = user.login
         td = user.password
         td = user.mail
-        td = user.phone
-        td = user.reviews
         td = link_to 'Show', user
         td = link_to 'Edit', edit_user_path(user)
         td = link_to 'Destroy', user, data: {:confirm => 'Are you sure?'}, :method => :delete

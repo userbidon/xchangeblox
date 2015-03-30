@@ -11,22 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330075408) do
-
-  create_table "blocks", force: true do |t|
-    t.string   "block_type"
-    t.string   "support_type"
-    t.integer  "block_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150318140505) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "login"
     t.string   "password"
     t.string   "mail"
-    t.integer  "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

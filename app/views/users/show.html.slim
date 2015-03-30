@@ -4,17 +4,11 @@ p
   strong Name:
   = @user.name
 p
-  strong Login:
-  = @user.login
-p
   strong Password:
   = @user.password
 p
   strong Mail:
   = @user.mail
-p
-  strong Phone:
-  = @user.phone
 
 = link_to 'Edit', edit_user_path(@user)
 '|
