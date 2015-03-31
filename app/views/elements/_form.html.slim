@@ -1,0 +1,24 @@
+= form_for @element do |f|
+  - if @element.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@element.errors.count, "error")} prohibited this element from being saved:"
+      ul
+        - @element.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :type_element
+    = f.select :type_element, options_for_select(@type)
+  .field
+    = f.label :module
+    = f.select :module, options_for_select(@module)
+  .field
+    = f.label :promotion
+    = f.select :promotion, options_for_select(@promo)
+  .field
+    = f.label :chemin_element
+    = f.text_field :chemin_element
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .actions = f.submit

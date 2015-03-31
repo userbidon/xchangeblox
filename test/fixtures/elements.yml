@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_element: MyString
+  module: MyString
+  promotion: MyString
+  chemin_element: MyString
+  user_id: MyString
+
+two:
+  type_element: MyString
+  module: MyString
+  promotion: MyString
+  chemin_element: MyString
+  user_id: MyString

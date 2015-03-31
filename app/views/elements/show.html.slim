@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Type element:
+  = @element.type_element
+p
+  strong Module:
+  = @element.module
+p
+  strong Promotion:
+  = @element.promotion
+p
+  strong Chemin element:
+  = @element.chemin_element
+p
+  strong User:
+  = @element.user_id
+
+= link_to 'Edit', edit_element_path(@element)
+'|
+= link_to 'Back', elements_path

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'landing#index'
-
+  resources :elements
   resources :users
 
+  root to: 'landing#index'
   get 'landing/index'
   get 'sessions/new'
-
   get    'help'    => 'static_pages#help'
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
