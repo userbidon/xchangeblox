@@ -4,10 +4,8 @@ class Element < ActiveRecord::Base
     #ou bien si tu veux comprendre
     #MODULE_LIST =  (21..23).to_a.map{|i| "A#{i}"}
     PROMO_LIST = %w(INGE1 INGE2)
-    COURS_LIST = %w(cours td)
+    ELEMENT_LIST = %w(cours td)
 
-  validates :attributes, inclusion: {in: MODULE_LIST}
-
-  1et puis après dans tes vues tu utilie Element::MODULE_LIST pour appeler ces tableaux
+  # et puis après dans tes vues tu utilie Element::MODULE_LIST pour appeler ces tableaux
 
 end

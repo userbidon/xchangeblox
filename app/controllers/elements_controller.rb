@@ -1,5 +1,6 @@
 class ElementsController < ApplicationController
   before_action :set_element, only: [:show, :edit, :update, :destroy]
+  before_action :force_user_to_be_connected
 
   # GET /elements
   # GET /elements.json
@@ -26,6 +27,7 @@ class ElementsController < ApplicationController
   # POST /elements.json
   def create
     @element = Element.new(element_params)
+    @element.user_id = @current_user
 
     respond_to do |format|
       if @element.save

@@ -17,9 +17,6 @@ class ApplicationController < ActionController::Base
     unless @current_user
       flash[:error] = 'Vous devez être connecté pour effectuer cette action'
       redirect_to :login
-
-
-      link_to 'mon lien', login_path(tutu: 'toto')
     end
   end
 end

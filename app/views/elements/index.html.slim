@@ -6,8 +6,6 @@ table
       th Type element
       th Module
       th Promotion
-      th Chemin element
-      th User
       th
       th
       th
@@ -18,8 +16,6 @@ table
         td = element.type_element
         td = element.module
         td = element.promotion
-        td = element.chemin_element
-        td = element.user_id
         td = link_to 'Show', element
         td = link_to 'Edit', edit_element_path(element)
         td = link_to 'Destroy', element, data: {:confirm => 'Are you sure?'}, :method => :delete

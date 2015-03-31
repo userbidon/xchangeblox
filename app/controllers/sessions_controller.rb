@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:current_user_id] = user.id
-      flash[:error] = "Vous avez bien été connecté à l'application"
+      flash[:success] = "Vous avez bien été connecté à l'application"
       redirect_to :root
     else
       session[:current_user_id] = nil
