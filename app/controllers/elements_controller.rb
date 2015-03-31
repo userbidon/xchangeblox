@@ -15,9 +15,7 @@ class ElementsController < ApplicationController
   # GET /elements/new
   def new
     @element = Element.new
-    @module = [['A21', 1], ['A22', 2]]
-    @promo = [['INGE1', 1], ['INGE2', 2]]
-    @type = [['Cours', 1], ['TD', 2]]
+
   end
 
   # GET /elements/1/edit
