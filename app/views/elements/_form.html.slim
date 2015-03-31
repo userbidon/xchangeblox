@@ -16,6 +16,6 @@
     = f.label :promotion
     = f.select :promotion, options_for_select(Element::PROMO_LIST)
   .field
-    = f.file_field(:chemin_element, :multiple => true)
+    = f.file_field(:file, :multiple => true)
 
   .actions = f.submit

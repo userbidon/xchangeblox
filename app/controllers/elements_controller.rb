@@ -30,6 +30,12 @@ class ElementsController < ApplicationController
     @element.user_id = @current_user
 
     respond_to do |format|
+
+      uploaded_io = params[:element][:file]
+      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+
       if @element.save
         format.html { redirect_to @element, notice: 'Element was successfully created.' }
         format.json { render :show, status: :created, location: @element }
