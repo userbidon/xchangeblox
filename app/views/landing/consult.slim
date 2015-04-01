@@ -1,0 +1,4 @@
+p Choose your promotion
+- Element::PROMO_LIST.each do |promo|
+  = link_to promo, promotion_path(:promo => promo)
+  br

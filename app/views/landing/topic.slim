@@ -1,0 +1,9 @@
+p
+  | Module
+  | &nbsp;
+  = @topic
+
+p Choose the type of document
+- Element::ELEMENT_LIST.each do |element|
+  = link_to element, promotion_path
+  br

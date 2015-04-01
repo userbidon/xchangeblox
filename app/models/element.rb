@@ -1,11 +1,9 @@
 class Element < ActiveRecord::Base
 
-    MODULE_LIST = %w(A21 A22 A23) #= equivaut à ['A21', 'A22', 'A23']
-    #ou bien si tu veux comprendre
-    #MODULE_LIST =  (21..23).to_a.map{|i| "A#{i}"}
-    PROMO_LIST = %w(INGE1 INGE2)
-    ELEMENT_LIST = %w(cours td)
+    # MODULE_LIST =  (21..23).to_a.map{|i| "A#{i}"}
+    PROMO_LIST = %w(CB1 CB2 INGE1 INGE2 INGE3 INGED1 INGED2 INGED3 INGEAC1 INGEFP2 INGETTN1 INGEPRO3)
+    ELEMENT_LIST = %w(Cours QROC TD TP Projets)
 
-  # et puis après dans tes vues tu utilie Element::MODULE_LIST pour appeler ces tableaux
+    # utiliser  Element::ELEMENT_LIST pour appeler ces tableaux
 
 end

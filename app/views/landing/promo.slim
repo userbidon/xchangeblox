@@ -1,0 +1,9 @@
+p
+  | Promotion
+  | &nbsp;
+  = @promo
+
+p Choose your module
+- @topics.each do |topic|
+  = link_to topic.name, topic_path(:topic => topic.name)
+  br
