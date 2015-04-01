@@ -7,7 +7,7 @@
           li = message
 
   .field
-    = f.label :type_element
+    = f.label "Type de document"
     = f.select :type_element, options_for_select(Element::ELEMENT_LIST)
   .field
     = f.label :module
@@ -16,6 +16,6 @@
     = f.label :promotion
     = f.select :promotion, options_for_select(Element::PROMO_LIST)
   .field
-    = f.file_field(:file, :multiple => true)
+    = f.file_field(:name)
 
-  .actions = f.submit
+  .actions = f.submit "Ajouter le document"

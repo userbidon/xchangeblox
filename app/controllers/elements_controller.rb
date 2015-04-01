@@ -1,6 +1,9 @@
 class ElementsController < ApplicationController
   before_action :set_element, only: [:show, :edit, :update, :destroy]
   before_action :force_user_to_be_connected
+  before_action only: [:destroy, :update, :edit] do
+    is_admin(@element.user_id)
+  end
 
   # GET /elements
   # GET /elements.json
@@ -31,14 +34,15 @@ class ElementsController < ApplicationController
 
     respond_to do |format|
 
-      uploaded_io = params[:element][:file]
-      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      uploaded_io = params[:element][:name]
+      File.open(Rails.root.join('public', 'data', uploaded_io.original_filename), 'wb') do |file|
         file.write(uploaded_io.read)
       end
 
       if @element.save
-        format.html { redirect_to @element, notice: 'Element was successfully created.' }
+        format.html { redirect_to @element }
         format.json { render :show, status: :created, location: @element }
+        flash[:success] = "Le Document a bien été ajouté."
       else
         format.html { render :new }
         format.json { render json: @element.errors, status: :unprocessable_entity }
