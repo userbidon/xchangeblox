@@ -20,13 +20,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def is_admin(param)
-    unless @current_user.role == "admin" || ""+@current_user.id.to_s == param
-      flash[:error] = 'Vous ne possédez pas les autorisations nécessaires'
-      redirect_to(:back)
-    end
-  end
-
   def have_permission_to_download
     unless @current_user.permission == "1"
       flash[:error] = 'Vous ne pouvez pas effectuer cette action'

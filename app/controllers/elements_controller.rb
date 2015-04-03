@@ -1,66 +1,50 @@
 class ElementsController < ApplicationController
   before_action :set_element, only: [:show, :edit, :update, :destroy]
   before_action :force_user_to_be_connected
-  before_action only: [:destroy, :update, :edit] do
-    is_admin(@element.user_id)
-  end
+  before_action :redirect_if_not_allowed, only: [:destroy, :update, :edit]
 
-  # GET /elements
-  # GET /elements.json
+
   def index
     @elements = Element.all
   end
 
-  # GET /elements/1
-  # GET /elements/1.json
+
   def show
   end
 
-  # GET /elements/new
+
   def new
     @element = Element.new
 
   end
 
-  # GET /elements/1/edit
+
   def edit
   end
 
-  # POST /elements
-  # POST /elements.json
+
   def create
     @element = Element.new(element_params)
-    @element.user_id = @current_user
-
-    respond_to do |format|
-
-      uploaded_io = params[:element][:name]
-      File.open(Rails.root.join('public', 'data', uploaded_io.original_filename), 'wb') do |file|
-        file.write(uploaded_io.read)
-      end
-
-      if @element.save
-        format.html { redirect_to @element }
-        format.json { render :show, status: :created, location: @element }
-        flash[:success] = "Le Document a bien été ajouté."
-      else
-        format.html { render :new }
-        format.json { render json: @element.errors, status: :unprocessable_entity }
-      end
+    @element.user = @current_user
+    uploaded_io = params[:element][:name]
+    File.open(Rails.root.join('public', 'data', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    if @element.save
+      flash[:success] = "Le Document a bien été ajouté."
+      redirect_to @element
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /elements/1
   # PATCH/PUT /elements/1.json
   def update
-    respond_to do |format|
-      if @element.update(element_params)
-        format.html { redirect_to @element, notice: 'Element was successfully updated.' }
-        format.json { render :show, status: :ok, location: @element }
-      else
-        format.html { render :edit }
-        format.json { render json: @element.errors, status: :unprocessable_entity }
-      end
+    if @element.update(element_params)
+      redirect_to @element, notice: 'Element was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -75,13 +59,24 @@ class ElementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_element
-      @element = Element.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_element
+    @element = Element.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def element_params
-      params.require(:element).permit(:type_element, :module, :promotion, :chemin_element, :user_id)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def element_params
+    params.require(:element).permit(:type_element, :module, :promotion, :chemin_element, :user_id)
+  end
+
+  def redirect_if_not_allowed
+    unless @element.is_this_user_allowed_to_edit_me?(user)
+      flash[:error] = 'Vous ne possédez pas les autorisations nécessaires'
+      redirect_to(:back)
     end
+  end
 end
+
+
+
+
